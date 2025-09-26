@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raycaster</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="container bg-primary bg-gradient min-vw-100 sticky-top shadow">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="projecten.html" class="nav-link active bg-dark" aria-current="page">Terug Naar Projecten</a></li>
+            </ul>
+        </header>
+    </div>
+
+    <div class="container p-3">
+        <div class="row text-center">
+            <h1>Raycaster</h1>
+            <div class="col"><canvas id="windowcanvas" width="800px" height="600px" style="border-style: solid;"></canvas></div>
+            <div class="col">
+                <h3>Besturing</h3>
+                <p></p>
+            </div>
+        </div>
+        <canvas id="debug" width="400px" height="300px" style="border-style: solid;"></canvas>
+    </div>
+
+    <script src="../js/raycastengine.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
