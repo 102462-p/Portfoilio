@@ -56,6 +56,6 @@ function InitMain(){
 }
 
 let win_location = window.location.pathname;
-if (win_location == '/pages/projecten.html'){
+if (win_location == 'pages/projecten.html'){
     load_JSON("../js/projectcards.json");
 }
