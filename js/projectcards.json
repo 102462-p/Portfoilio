@@ -1,9 +1,16 @@
 [
     {
         "title": "Raycaster",
-        "description": "Text",
+        "description": "Wordt nog toegevoegd.",
         "link": "raycast.html",
         "icon": "../assets/png/icon_raycaster.png",
+        "containerId": "card_container"
+    },
+    {
+        "title": "Z64/MIPS3 Emulator",
+        "description": "Wordt nog toegevoegd.",
+        "link": "z64.html",
+        "icon": "../assets/png/icon_z64.png",
         "containerId": "card_container"
     },
     {
@@ -11,6 +18,20 @@
         "description": "Text",
         "link": "",
         "icon": "../assets/png/test.png",
+        "containerId": "card_container"
+    },
+    {
+        "title": "Test1",
+        "description": "Text",
+        "link": "",
+        "icon": "../assets/png/bombs_painting.jpg",
+        "containerId": "card_container"
+    },
+    {
+        "title": "Test2",
+        "description": "Text",
+        "link": "",
+        "icon": "../assets/png/stonewall_painting.jpg",
         "containerId": "card_container"
     }
 ]

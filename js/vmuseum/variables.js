@@ -1,0 +1,29 @@
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth -1, window.innerHeight -1);
+document.body.appendChild(renderer.domElement);
+
+const light = new THREE.AmbientLight(0xFFFFFF, 1.7);
+scene.add(light);
+
+const loader = new THREE.GLTFLoader();
+const texLoader = new THREE.TextureLoader();
+
+const PIdeg = 3.14 / 180;
+const clock = new THREE.Clock();
+
+const geometry = new THREE.BoxGeometry(100, 1, 100);
+const material = new THREE.MeshBasicMaterial({ color: 0xCC0000, wireframe: false});
+
+const p1 = new Player('p1', [0,0,0], [0,0,0], [2,2,2]);
+p1.InitPlayer();
+
+//const p2 = new Player('p2', [5,0,-5], [0,0,0], [1.5,1.5,1.5]);
+//p2.InitPlayer();
+
+let distance = 10;
+let AngleX = 0;
+let AngleY = 10;
+
+let CamDir = {x: 0, y: 0}

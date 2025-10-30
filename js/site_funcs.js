@@ -1,4 +1,10 @@
 let jsonCards = null;
+let paintings = [];
+
+let simpleList = null;
+
+const queryStr = window.location.search;
+const urlParam = new URLSearchParams(queryStr);
 
 function make_card(name, desc, link, img, parent) {
     const root = document.createElement('div');
@@ -46,16 +52,54 @@ async function load_JSON(file) {
 }
 
 function InitMain(){
-    console.log(jsonCards);
+    //console.log(jsonCards);
+    const museum_wind = document.getElementById('museum_window');
 
     for (let i = 0; i < jsonCards.length; i++){
         const curCard = jsonCards[i];
+        let offset = (i * 5) - 7;
         if (!curCard.link){curCard.link = '404.html'}
-        make_card(curCard.title, curCard.description, curCard.link, curCard.icon, 'card_container');
+        if(simpleList){
+            make_card(curCard.title, curCard.description, curCard.link, curCard.icon, 'card_container');
+        }
+        else{
+            paintings[paintings.length++] = {url: curCard.link, texture: curCard.icon, position: {x: offset, y: 2, z: -9}};
+        }
+    }
+
+    if(!simpleList){
+        const game_frame = document.getElementById('game_frame');
+        game_frame.src = 'museum.html';
+        game_frame.onload = () => {
+            sendMsg(game_frame.contentWindow, [paintings]);
+        }
+    }
+    else{
+        museum_wind.style.setProperty('display', 'none', 'important');
     }
 }
 
 let win_location = window.location.pathname;
-if (true){//(win_location == 'Portfoilio/pages/projecten.html'){
+if (win_location == '/pages/projecten.html'){
+    simpleList = urlParam.get('interface');
     load_JSON("../js/projectcards.json");
+}
+
+if(urlParam.get('museum')){
+    const Header = document.getElementById('pageHeader');
+    const btnBack = document.createElement('button');
+    const container = document.createElement('div');
+
+    container.setAttribute('class', 'd-flex justify-content-center py-3');
+    btnBack.setAttribute('class', 'btn btn-dark p-2 text-light rounded');
+    btnBack.innerHTML = 'Terug naar Museum';
+    Header.children[0].style.setProperty('display', 'none', 'important');
+
+    btnBack.addEventListener('click', (e) => {
+        window.parent.location.href = 'projecten.html';
+    });
+
+    container.append(btnBack);
+    Header.append(container);
+    console.log("Inside 3D Museum!");
 }

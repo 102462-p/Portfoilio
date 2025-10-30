@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z64-Emu</title>
+    <link rel="stylesheet" href="" type="icon">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div id="pageHeader" class="container bg-primary bg-gradient min-vw-100 sticky-top shadow">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="projecten.html?interface='simpel'" class="nav-link active bg-dark" aria-current="page">Terug Naar Projecten</a></li>
+            </ul>
+        </header>
+    </div>
+
+    <div class="container mb-2 mt-3 text-center align-content-center">
+        <h2 id="game_tile" class="text-light fw-bold">Please choose a ROM file.</h2>
+        <input type="file" id="rom_import" class="form-control form-control-lg w-50">
+    </div>
+
+    <div class="container">
+        <canvas width="320" height="240"></canvas>
+    </div>
+
+    <!--<select name="" id="">
+        <option value="ROM">ROM</option>
+        <option value="DRAM">DRAM</option>
+    </select>-->
+
+    <div class="container">
+        <input id="memoryAddress" type="text" maxlength="10" value="0x80000400">
+        <input id="memoryLength" type="number" value="10">
+        <button id="searchMemorybtn" class="btn btn-primary">Search in memory</button>
+        <button id="refreshbtn" class="btn btn-primary">Refresh Register view</button>
+        <div class="mt-2">
+            <textarea readonly name="MemoryContent" id="MemoryContent" style="width: 25vh; height: 50vh;"></textarea>
+            <textarea readonly name="asmCode" id="asmCode" style="width: 35vh; height: 50vh;"></textarea>
+            <textarea readonly name="regs" id="regs" style="width: 20vh; height: 50vh;"></textarea>
+        </div>
+    </div>
+
+    <script src="../js/Z64/global_vars.js"></script>
+    <script type="module" src="../js/Z64/main.js"></script>
+    <script src="../js/site_funcs.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

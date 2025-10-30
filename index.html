@@ -10,31 +10,31 @@
 <body>
     <div class="container bg-primary bg-gradient min-vw-100 sticky-top shadow">
         <header class="d-flex justify-content-center py-3">
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills bg-gradient p-2">
                 <li class="nav-item"><a href="index.html" class="nav-link active bg-dark" aria-current="page">Huis</a></li>
                 <li class="nav-item"><a href="pages/over.html" class="nav-link text-light">Over Mij</a></li>
-                <li class="nav-item"><a href="pages/projecten.html" class="nav-link text-light">Projecten</a></li>
+                <li class="nav-item"><a href="pages/projecten.html?interface='simpel'" class="nav-link text-light">Projecten</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-light">CV</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-light">??</a></li>
             </ul>
         </header>
     </div>
 
-    <div class="container p-3 bg-primary min-vw-100 mt-5 shadow">
-        <div class="row">
-            <h1 class="text-light fw-bold text-center">Mijn Portfolio Site</h1>
-            <div class="col p-4 d-flex justify-content-center gap-5">
+    <div class="container d-flex m-5">
+        <div class="col">
+            <h1 class="text-light fw-bold">Portfolio Website Van: Stefan Rook</h1>
+        </div>
+
+        <div class="col p-3 bg-primary shadow w-50 rounded">
+            <h1 class="text-light fw-bold">Doel van de website</h1>
+            <div class="col p-4 gap-5">
                 <p class="text-light">Klein stuk informatie komt hier.</p>
-                <a class="bg-success nav-link p-2 text-light rounded" href="pages/projecten.html">Zie Projecten</a>
+                <button class="btn btn-success p-2 text-light rounded w-50 mb-2"><a class="nav-link" href="pages/projecten.html">Bekijk Projecten(3D Museum)</a></button>
+                <button class="btn btn-success p-2 text-light rounded w-50"><a class="nav-link" href="pages/projecten.html?interface='simpel'">Bekijk Projecten(Simpel interface)</a></button>
             </div>
         </div>
     </div>
-
-    <div class="container mt-5">
-        <div class="row">
-            <p>Text</p>
-        </div>
-    </div>
+    <img width="700" src="assets/png/Bird_Tp.png" alt="" style="transform: translate(-5%,-50%); pointer-events: none;">
 
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
