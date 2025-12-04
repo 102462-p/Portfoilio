@@ -79,6 +79,15 @@ function mainloop() {
     }
   }
 
+  raycaster.setFromCamera(mouse, camera);
+  const intersections = raycaster.intersectObjects(scene.children);
+  if(intersections.length > 0){
+    for(let i = 0; i < intersections.length; i++){
+      console.log(intersections[i].object);
+      intersections[i].object.material.opacity = 0.1;
+    }
+  }
+
   //AngleY += 0.01;
   //AngleX += 0.01;
 

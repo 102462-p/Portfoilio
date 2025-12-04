@@ -32,6 +32,9 @@ const clock = new THREE.Clock();
 const geometry = new THREE.BoxGeometry(100, 1, 100);
 const material = new THREE.MeshBasicMaterial({ color: 0xCC0000, wireframe: false});
 
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
 var world = new CANNON.World();
 world.gravity.set(0, -9.82, 0);
 

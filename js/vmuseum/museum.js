@@ -194,9 +194,6 @@ divider2Body.addShape(divider2Col);
 divider2Body.position.set(8, MUSEUM_HEIGHT / 2, -3);
 world.addBody(divider2Body);
 
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-
 window.addEventListener('click', () => {
   //mouse.x = 0;
   //mouse.y = 0;
