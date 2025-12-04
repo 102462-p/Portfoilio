@@ -5,49 +5,35 @@ class Player{
         this.rot = rot;
 
         this.mesh;
-        this.animations;
-        this.mixer;
+        this.charModel;
         this.grounded = false;
         this.JumpForce = 10;
         this.velocity = {x: 0, y: 0, z: 0};
         this.moveDir = {x: 0, y: 0, z: 0};
         this.position = {x: pos[0], y: pos[1], z: pos[2]};
         this.scale = {x: size[0], y: size[1], z: size[2]};
+        this.body = null;
+        this.isMoving = false;
+        this.animTime = 0;
     }
     InitPlayer(){
-        //const geometry = new THREE.CylinderGeometry(1, 1, 3, 32);
-        //const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
-        //this.mesh = new THREE.Mesh(geometry, material);
-        //scene.add(this.mesh);
-        //const texture_eye = texLoader.load('../assets/test.png', (texture) => {texture.flipY = false;});
-        //const texture_hair = texLoader.load('../assets/test.png', (texture) => {texture.flipY = false;});
-        //const texture_fabric = texLoader.load('../assets/test.png', (texture) => {texture.flipY = false;});
-
-        //texture_fabric.wrapS = THREE.RepeatWrapping;
-        //texture_fabric.wrapT = THREE.RepeatWrapping;
-
-        //const textures = ['Material.006', texture_eye, 'Material.005', texture_hair, 'Material', texture_fabric];
-        const textures = [];
-
-        LoadModel('../assets/models/peter_griffin.glb', this.position, this.rot, this.scale, textures).then(({mesh, animations, mixer}) => {
-            this.mesh = mesh; 
-            this.animations = animations; 
-            this.mixer = mixer;
+        this.charModel = new CharacterModel(scene, this.position, 1.2);
+        this.mesh = this.charModel.createRobot();
+        
+        const shape = new CANNON.Cylinder(0.4, 0.4, 2.5, 8);
+        this.body = new CANNON.Body({
+            mass: 5,
+            position: new CANNON.Vec3(this.position.x, this.position.y + 1.25, this.position.z),
+            shape: shape,
+            linearDamping: 0.9,
+            angularDamping: 0.99,
+            fixedRotation: true // Prevent the player from rotating
         });
+        world.addBody(this.body);
     }
 
     Jump(){
-        if(this.grounded){
-            let JumpAudio = new Audio();
-            //JumpAudio.src = "../assets/sounds/MP3/Jump_Swoosh.mp3";
-            //JumpAudio.play();
-            //const JumpAction = this.mixer.clipAction(this.animations[1]);
-            //JumpAction.setLoop(THREE.LoopOnce, 1);
-            //JumpAction.play();
-
-            //JumpAction.setEffectiveTimeScale(1);  // Optional: Set time scale to normal
-            //JumpAction.time = 0;  // Jump to the first frame of the animation
-
+        if(this.grounded && this.body){
             console.log("Jump");
             this.velocity.y += this.JumpForce * 0.02;
             this.grounded = false;
@@ -88,7 +74,7 @@ class Player{
                 this.mesh.rotation.y = -(RotAngle + -90 * PIdeg);
             }
             //console.log(this.animations);
-            this.mixer.update(clock.getDelta());
+            //this.mixer.update(clock.getDelta());
         }
 
         if(this.velocity.x != 0){

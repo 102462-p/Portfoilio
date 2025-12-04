@@ -15,7 +15,7 @@ function make_card(name, desc, link, img, parent) {
     const descTitle = document.createElement('h3');
     const description = document.createElement('p');
 
-    root.setAttribute('class', 'col-6 row bg-primary bg-gradient text-center rounded p-2 shadow');
+    root.setAttribute('class', 'col-6 row bg_window bg-grey text-center rounded p-2 shadow');
 
     col.setAttribute('class', 'col');
     cardImg.setAttribute('class', 'w-100 rounded');
@@ -27,9 +27,9 @@ function make_card(name, desc, link, img, parent) {
     cardLink.setAttribute('class', 'm-3 p-2 bg-success nav-link text-light rounded');
 
     col2.setAttribute('class', 'col');
-    descTitle.setAttribute('class', 'text-light');
+    descTitle.setAttribute('class', 'text-dark');
     descTitle.innerHTML = 'Omschrijving';
-    description.setAttribute('class', 'text-light');
+    description.setAttribute('class', 'text-dark');
     description.textContent = desc;
 
     col.append(cardImg);
@@ -58,7 +58,7 @@ function InitMain(){
     for (let i = 0; i < jsonCards.length; i++){
         const curCard = jsonCards[i];
         let offset = (i * 5) - 7;
-        if (!curCard.link){curCard.link = '404.html'}
+        if (!curCard.link){continue;}//curCard.link = '404.html'}
         if(simpleList){
             make_card(curCard.title, curCard.description, curCard.link, curCard.icon, 'card_container');
         }
@@ -80,26 +80,27 @@ function InitMain(){
 }
 
 let win_location = window.location.pathname;
-if (win_location == './pages/projecten.html'){
+if (win_location.includes('projecten.html')){
     simpleList = urlParam.get('interface');
     load_JSON("../js/projectcards.json");
 }
 
+//simpleList = urlParam.get('interface');
+//load_JSON("../js/projectcards.json");
+
 if(urlParam.get('museum')){
     const Header = document.getElementById('pageHeader');
     const btnBack = document.createElement('button');
-    const container = document.createElement('div');
 
-    container.setAttribute('class', 'd-flex justify-content-center py-3');
     btnBack.setAttribute('class', 'btn btn-dark p-2 text-light rounded');
     btnBack.innerHTML = 'Terug naar Museum';
+    console.log(Header.children)
     Header.children[0].style.setProperty('display', 'none', 'important');
 
     btnBack.addEventListener('click', (e) => {
         window.parent.location.href = 'projecten.html';
     });
 
-    container.append(btnBack);
-    Header.append(container);
+    Header.append(btnBack);
     console.log("Inside 3D Museum!");
 }

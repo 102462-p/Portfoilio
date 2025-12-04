@@ -1,7 +1,56 @@
+* {
+    font-family: font_1;
+}
+
 body {
-    background-image: url('/assets/png/pexels-tbee-14592-82256.jpg');
+    /*background-image: url('../assets/png/sky_background.jpeg');*/
+    background-color: #777777;
     background-position: center;
     background-size: cover;
-    background-color: #cda87f;
-    background-blend-mode: multiply;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
+
+.bg-grey {
+    background-color: #DDDDDD;
+}
+.bg-yellow {
+    background-color: #EEEEAA;
+}
+
+.bg_window {
+    /*background-image: url('../assets/png/noise/perlin_noise4.png');*/
+    background-blend-mode: soft-light;
+    background-size: 50%;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+
+    border-width: 2px;
+    border-style:ridge;
+    border-color: #777777;
+}
+
+.btn_classic{
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#DDDDDD, #cdcdcd);
+    padding: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+
+    border-width: 2px;
+    border-style:ridge;
+    border-color: #777777;
+}
+
+.jetbrains-mono-font_1 {
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+.padding {
+    padding-bottom: 50%;
+}
+
