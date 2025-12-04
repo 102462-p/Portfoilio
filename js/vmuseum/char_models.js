@@ -122,18 +122,18 @@ class CharacterModel {
         group.add(rightHand);
 
         // Legs
-        const legGeometry = new THREE.BoxGeometry(0.3, 0.9, 0.3);
+        const legGeometry = new THREE.BoxGeometry(0.3, 0.5, 0.3);
         
         // Left leg
         const leftLeg = new THREE.Mesh(legGeometry, bodyMaterial);
-        leftLeg.position.set(-0.2, 0.0, 0);
+        leftLeg.position.set(-0.2, 0.25, 0);
         leftLeg.castShadow = true;
         group.add(leftLeg);
         this.parts.leftLeg = leftLeg;
 
         // Right leg
         const rightLeg = new THREE.Mesh(legGeometry, bodyMaterial);
-        rightLeg.position.set(0.2, 0.0, 0);
+        rightLeg.position.set(0.2, 0.25, 0);
         rightLeg.castShadow = true;
         group.add(rightLeg);
         this.parts.rightLeg = rightLeg;
@@ -150,12 +150,12 @@ class CharacterModel {
         // Feet
         const footGeometry = new THREE.BoxGeometry(0.35, 0.15, 0.45);
         const leftFoot = new THREE.Mesh(footGeometry, jointMaterial);
-        leftFoot.position.set(-0.2, -0.525, 0.05);
+        leftFoot.position.set(-0.2, 0, 0.05);
         leftFoot.castShadow = true;
         group.add(leftFoot);
 
         const rightFoot = new THREE.Mesh(footGeometry, jointMaterial);
-        rightFoot.position.set(0.2, -0.525, 0.05);
+        rightFoot.position.set(0.2, 0, 0.05);
         rightFoot.castShadow = true;
         group.add(rightFoot);
 

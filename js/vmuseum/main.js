@@ -7,11 +7,11 @@ function museum_init(){
   // Define painting positions on walls
   const wallPositions = [
     // North wall (back)
-    { x: -15, y: 3, z: -14.8, rotY: 0 },
-    { x: -8, y: 3, z: -14.8, rotY: 0 },
-    { x: 0, y: 3, z: -14.8, rotY: 0 },
-    { x: 8, y: 3, z: -14.8, rotY: 0 },
-    { x: 15, y: 3, z: -14.8, rotY: 0 },
+    { x: -15, y: 3, z: -14.5, rotY: 0 },
+    { x: -8, y: 3, z: -14.5, rotY: 0 },
+    { x: 0, y: 3, z: -14.5, rotY: 0 },
+    { x: 8, y: 3, z: -14.5, rotY: 0 },
+    { x: 15, y: 3, z: -14.5, rotY: 0 },
     // East wall (right)
     { x: 19.8, y: 3, z: -8, rotY: Math.PI / 2 },
     { x: 19.8, y: 3, z: 0, rotY: Math.PI / 2 },
@@ -46,9 +46,11 @@ function museum_init(){
     );
     
     // Use predefined wall positions, cycling through them
-    const pos = wallPositions[i % wallPositions.length];
+    //const pos = wallPositions[i % wallPositions.length];
+    const pos = wallPositions[i];
+    console.log(pos, p.position);
     painting.position.set(pos.x, pos.y, pos.z);
-    painting.rotation.y = pos.rotY;
+    //painting.rotation.y = pos.rotY;
     
     painting.userData = { url: p.url };
     scene.add(painting);
