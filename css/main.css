@@ -3,8 +3,8 @@
 }
 
 body {
-    /*background-image: url('../assets/png/sky_background.jpeg');*/
-    background-color: #777777;
+    background-image: url('https://cdn.pixabay.com/photo/2020/05/25/20/06/storm-5220380_1280.jpg');
+    background-color: #9e9e9e;
     background-position: center;
     background-size: cover;
     image-rendering: crisp-edges;
@@ -12,10 +12,19 @@ body {
 }
 
 .bg-grey {
-    background-color: #DDDDDD;
+    background-image: linear-gradient(#DDDDDD, #cecece);
 }
 .bg-yellow {
-    background-color: #EEEEAA;
+    background-image: linear-gradient(#c7542e, #ab2727);
+}
+
+.window_border {
+    border-radius: 1vh;
+    overflow: hidden;
+
+    border-width: 2px;
+    border-style:ridge;
+    border-color: #777777;
 }
 
 .bg_window {
@@ -24,16 +33,28 @@ body {
     background-size: 50%;
     image-rendering: crisp-edges;
     image-rendering: pixelated;
+}
 
+.btn_default_border {
     border-width: 2px;
     border-style:ridge;
     border-color: #777777;
+    border-radius: 100vh;
+}
+
+.btn_close {
+    width: 40px;
+    background-image: linear-gradient(#ff4a4a, #d73b3b);
+    padding: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
 }
 
 .btn_classic{
     background-color: #DDDDDD;
-    background-image: linear-gradient(#DDDDDD, #cdcdcd);
-    padding: 5px;
+    background-image: linear-gradient(#DDDDDD, #bdbdbd);
+    padding: 10px;
     margin-left: 10px;
     text-decoration: none;
     color: black;
@@ -41,6 +62,7 @@ body {
     border-width: 2px;
     border-style:ridge;
     border-color: #777777;
+    border-radius: 100vh;
 }
 
 .jetbrains-mono-font_1 {
