@@ -11,6 +11,12 @@ body {
     image-rendering: pixelated;
 }
 
+header {
+    border-color: #42698C;
+    border-width: 2px;
+    border-style: solid;
+}
+
 .bg-grey {
     background-image: linear-gradient(#DDDDDD, #cecece);
 }
