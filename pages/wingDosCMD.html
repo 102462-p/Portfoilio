@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WingDOS</title>
+    <title>WingDOS - Stefan Rook</title>
     <link rel="icon" href="CMD_ico.svg">
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
@@ -11,10 +11,6 @@
         *{
             margin: 0;
             padding: 0;
-        }
-
-        body{
-            background-color: black;
         }
 
         .cursor{
@@ -39,39 +35,56 @@
     </style>
 </head>
 <body>
-    <header class="bg_window bg-yellow d-flex justify-content-center py-3 sticky-top shadow">
-        <ul class="nav nav-pills p-2">
+    <div class="bg-blue text-center text-light terminal-header">IBM DOS SHELL v6.22 - WINGDOS.EXE</div>
+    <header class="bg-cyan sticky-top shadow-sm">
+        <ul id="file-bar" class="nav nav-pills p-0">
             <li id="pageHeader" class="nav-item"><a href="projecten.html?interface='simpel'" class="btn_classic" aria-current="page">Terug Naar Projecten</a></li>
         </ul>
     </header>
 
-    <div class="container text-center mb-3 mt-2">
-        <h1 class="fw-bold text-light">i386 kernel / os</h1>
-    </div>
+    <div class="container mt-4">
+        <div class="window-frame mb-3">
+            <div class="bg-grey text-center window-title">C:\PROJECTS\WINGDOS\KERNEL.SYS</div>
+            <div class="window-content text-center">
+                <h1 class="fw-bold text-dark mb-3">i386 kernel / os</h1>
+            </div>
+        </div>
 
-    <div class="mb-3" id="screen_container" style="background-color: black;">
-        <div style="white-space: pre; font: 14px monospace; font-size: 2vw; user-select: none;"></div>
-        <canvas style="display: none"></canvas>
-    </div>
+        <div class="window-frame mb-3">
+            <div class="bg-grey text-center window-title">TERMINAL.EXE</div>
+            <div class="window-content" style="padding: 0; background-color: #000;">
+                <div id="screen_container" style="background-color: black;">
+                    <div style="white-space: pre; font: 14px monospace; font-size: 2vw; user-select: none;"></div>
+                    <canvas style="display: none"></canvas>
+                </div>
+            </div>
+        </div>
 
-    <div class="container text-center mb-3">
-        <div class="bg-yellow rounded p-2">
-            <h1 class="fw-bold text-light">Over</h1>
-            <p class="fw-bold text-light">Dit is een echte kernel dat draaid op v86js.</p>
-            <p class="fw-bold text-light">Het meeste code is gemaakt in C en ik heb GCC compiler gerbuikt.</p>
-            <div class="col">
-                <h3 class="fw-bold text-light">Besturing</h3>
-                <p class="fw-bold text-light">Alleen commando's ver, dir, mkdir, echo, doen wat,</p>
-                <p class="fw-bold text-light">het werkt zoals een normale console commando scherm.</p>
+        <div class="window-frame mb-3">
+            <div class="bg-grey text-center window-title">INFO.TXT</div>
+            <div class="window-content">
+                <h1 class="fw-bold text-dark mb-3">Over</h1>
+                <p class="terminal-text">Dit is een echte kernel dat draaid op v86js.</p>
+                <p class="terminal-text mb-3">Het meeste code is gemaakt in C en ik heb GCC compiler gerbuikt.</p>
+                
+                <div class="divider"></div>
+                
+                <h3 class="fw-bold text-dark mt-3 mb-3">Besturing</h3>
+                <p class="terminal-text">Alleen commando's ver, dir, mkdir, echo, doen wat,</p>
+                <p class="terminal-text mb-3">het werkt zoals een normale console commando scherm.</p>
 
-                <h3 class="fw-bold text-light">Wat het ik hiervan geleerd</h3>
-                <p class="fw-bold text-light">Ik heb van dit project geleerd hoe bestuurings programma's werken,</p>
-                <p class="fw-bold text-light">en hoe ik het kan programmeren op i386 hardware.</p>
-                <p class="fw-bold text-light">Ook heb ik geleerd hoe ik assembly en C moet coderen voor bare metal i386 cpu,</p>
-                <p class="fw-bold text-light">maar dat is iets dat ik nog wel uitdagend vind.</p>
+                <div class="divider"></div>
+
+                <h3 class="fw-bold text-dark mt-3 mb-3">Wat het ik hiervan geleerd</h3>
+                <p class="terminal-text">Ik heb van dit project geleerd hoe bestuurings programma's werken,</p>
+                <p class="terminal-text">en hoe ik het kan programmeren op i386 hardware.</p>
+                <p class="terminal-text">Ook heb ik geleerd hoe ik assembly en C moet coderen voor bare metal i386 cpu,</p>
+                <p class="terminal-text">maar dat is iets dat ik nog wel uitdagend vind.</p>
             </div>
         </div>
     </div>
+
+    <div class="padding"></div>
 
     <script src="../lib/libv86.js"></script>
     <script>

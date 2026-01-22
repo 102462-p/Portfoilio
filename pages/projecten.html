@@ -3,37 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projecten</title>
+    <title>Projecten - Stefan Rook</title>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-    <header class="bg_window bg-yellow d-flex justify-content-center py-3 sticky-top shadow">
-        <ul class="nav nav-pills p-2">
-            <li class="nav-item"><a href="../index.html" class="btn_classic" aria-current="page">Home</a></li>
+    <div class="bg-blue text-center text-light terminal-header">IBM DOS SHELL v6.22 - PROJECTS.DIR</div>
+    <header class="bg-cyan sticky-top shadow-sm">
+        <ul id="file-bar" class="nav nav-pills p-0">
+            <li class="nav-item"><a href="../index.html" class="btn_classic">Home</a></li>
             <li class="nav-item"><a href="over.html" class="btn_classic">Over Mij</a></li>
-            <li class="nav-item"><a href="projecten.html?interface='simpel'" class="btn_classic">Projecten</a></li>
+            <li class="nav-item"><a href="projecten.html?interface='simpel'" class="btn_classic active" aria-current="page">Projecten</a></li>
         </ul>
     </header>
 
-    <div class="container p-3">
-        <h1 class="text-center text-light fw-bold mb-4 mt-4">Projecten</h1>
-        <div class="row gap-5" id="card_container"></div>
+    <div class="container p-3 mt-4">
+        <div class="window-frame mb-4">
+            <div class="bg-grey text-center window-title">C:\PROJECTS\</div>
+            <div class="window-content">
+                <h1 class="text-center text-dark fw-bold mb-4">Projecten</h1>
+                <div class="row gap-5" id="card_container"></div>
+            </div>
+        </div>
         <div id="museum_window" class="d-flex justify-content-center">
             <!--<button id="startBtn" class="btn btn-success">Enter Museum</button>-->
-            <iframe id="game_frame" src="" frameborder="0" style="width: 100%; height: 78vh;"></iframe>
+            <iframe id="game_frame" src="" frameborder="0" style="width: 100%; height: 78vh; border: 3px solid #000;"></iframe>
         </div>
     </div>
 
     <div class="padding"></div>
 
-    <footer class="py-3 my-4 bg_window shadow bg-grey">
-        <ul class="nav nav-pills p-2 justify-content-center">
-            <li class="nav-item"><a href="../index.html" class="btn_classic" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="over.html" class="btn_classic">Over Mij</a></li>
-            <li class="nav-item"><a href="projecten.html?interface='simpel'" class="btn_classic">Projecten</a></li>
-        </ul>
-        <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+    <footer class="bg-cyan fixed-bottom footer-bar">
+        <span class="footer-text">F1=Help</span>
+        <span class="footer-separator">│</span>
+        <span class="footer-text">F3=View</span>
+        <span class="footer-separator">│</span>
+        <span class="footer-text">F10=Quit</span>
+        <span class="footer-right">Stefan Rook © 2026</span>
     </footer>
 
     <script src="../js/handlemsgs.js"></script>

@@ -3,42 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huis</title>
+    <title>Stefan Rook - Portfolio</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <div class="bg-blue text-center text-light">IBM DOS SHELL</div>
-    <header class="bg-cyan sticky-top">
+    <div class="bg-blue text-center text-light terminal-header">IBM DOS SHELL v6.22 - PORTFOLIO.EXE</div>
+    <header class="bg-cyan sticky-top shadow-sm">
         <ul id="file-bar" class="nav nav-pills p-0">
-            <li class="nav-item"><a href="index.html" class="btn_classic" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="index.html" class="btn_classic active" aria-current="page">Home</a></li>
             <li class="nav-item"><a href="pages/over.html" class="btn_classic">Over Mij</a></li>
             <li class="nav-item"><a href="pages/projecten.html?interface='simpel'" class="btn_classic">Projecten</a></li>
         </ul>
     </header>
 
-    <div class="container">
-        <div class="col">
-            <h1 class="text-dark fw-bold">Portfolio Website Van: Stefan Rook</h1>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="window-frame mb-4">
+                    <div class="bg-grey text-center window-title">C:\USERS\STEFAN\PORTFOLIO.TXT</div>
+                    <div class="window-content">
+                        <h1 class="text-dark fw-bold mb-3">C:\&gt; Stefan Rook</h1>
+                        <p class="terminal-text mb-1"><span class="prompt">FUNCTIE:</span> Software Developer & Creative Programmer</p>
+                        <p class="terminal-text mb-1"><span class="prompt">LOCATIE:</span> Nederland</p>
+                        <p class="terminal-text mb-3"><span class="prompt">STATUS:</span> <span class="status-ready">READY</span></p>
+                        <div class="divider"></div>
+                        <p class="terminal-text mt-3">
+                            <span class="text-success">&gt;&gt;</span> Gespecialiseerd in webapplicaties, retro computing en creatieve programmeeroplossingen.<br>
+                            <span class="text-success">&gt;&gt;</span> Ervaring met JavaScript, C, emscripten en retro game development.<br>
+                            <span class="text-success">&gt;&gt;</span> Passie voor het combineren van moderne technieken met retro aesthetics.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="container-fluid d-flex">
-        <div class="col">
-            <div class="bg-grey text-center window">Directory Tree</div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="window-frame">
+                    <div class="bg-grey text-center window-title">VAARDIGHEDEN.SYS</div>
+                    <div class="window-content">
+                        <ul class="skill-list">
+                            <li><span class="skill-bullet">■</span> JavaScript / WebGL / Three.js</li>
+                            <li><span class="skill-bullet">■</span> C / GCC / Emscripten</li>
+                            <li><span class="skill-bullet">■</span> HTML5 / CSS3 / Bootstrap</li>
+                            <li><span class="skill-bullet">■</span> Retro Computing (MIPS, Assembly)</li>
+                            <li><span class="skill-bullet">■</span> 3D Graphics & Game Engines</li>
+                            <li><span class="skill-bullet">■</span> Hardware Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="window-frame">
+                    <div class="bg-grey text-center window-title">PROJECTEN.DIR</div>
+                    <div class="window-content">
+                        <p class="terminal-text mb-3">C:\&gt; DIR /W</p>
+                        <div class="directory-list">
+                            <div class="dir-item"><span class="folder-icon">📁</span> 3D Museum Viewer</div>
+                            <div class="dir-item"><span class="folder-icon">📁</span> Raycast Engine</div>
+                            <div class="dir-item"><span class="folder-icon">📁</span> Z64 Emulator</div>
+                            <div class="dir-item"><span class="folder-icon">📁</span> DOS Terminal</div>
+                        </div>
+                        <button class="dos-button mt-3 w-100"><a class="nav-link" href="pages/projecten.html">C:\&gt; CD PROJECTEN (3D Museum)</a></button>
+                        <button class="dos-button mt-2 w-100"><a class="nav-link" href="pages/projecten.html?interface='simpel'">C:\&gt; DIR PROJECTEN (Lijst)</a></button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col">
-            <div class="bg-grey text-center window">C:\</div>
-            <p class="text-dark"></p>
-            <button class="p-2 text-light w-50 mb-2"><a class="nav-link" href="pages/projecten.html">Bekijk Projecten(3D Museum)</a></button>
-            <button class="p-2 text-light w-50"><a class="nav-link" href="pages/projecten.html?interface='simpel'">Bekijk Projecten(Simpel interface)</a></button>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="window-frame">
+                    <div class="bg-grey text-center window-title">SYSTEM.LOG</div>
+                    <div class="window-content console-log">
+                        <p class="log-entry"><span class="log-time">[SYS]</span> Portfolio system initialized...</p>
+                        <p class="log-entry"><span class="log-time">[OK]</span> Loading creative projects...</p>
+                        <p class="log-entry"><span class="log-time">[OK]</span> Retro aesthetic applied</p>
+                        <p class="log-entry"><span class="log-time">[INFO]</span> Ready for exploration. Type 'HELP' for commands.</p>
+                        <p class="terminal-text mt-2"><span class="text-warning blink">_</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="padding"></div>
 
-    <footer class="bg-cyan fixed-bottom">
-        F10=Actions
+    <footer class="bg-cyan fixed-bottom footer-bar">
+        <span class="footer-text">F1=Help</span>
+        <span class="footer-separator">│</span>
+        <span class="footer-text">F3=View</span>
+        <span class="footer-separator">│</span>
+        <span class="footer-text">F10=Quit</span>
+        <span class="footer-right">Stefan Rook © 2026</span>
     </footer>
 
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>

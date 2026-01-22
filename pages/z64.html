@@ -3,27 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z64-Emu</title>
+    <title>Z64 Emulator - Stefan Rook</title>
     <link rel="stylesheet" href="" type="icon">
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-    <header class="bg_window bg-yellow d-flex justify-content-center py-3 sticky-top shadow">
-        <ul class="nav nav-pills p-2">
+    <div class="bg-blue text-center text-light terminal-header">IBM DOS SHELL v6.22 - Z64EMU.EXE</div>
+    <header class="bg-cyan sticky-top shadow-sm">
+        <ul id="file-bar" class="nav nav-pills p-0">
             <li id="pageHeader" class="nav-item"><a href="projecten.html?interface='simpel'" class="btn_classic" aria-current="page">Terug Naar Projecten</a></li>
         </ul>
     </header>
 
-    <div class="container mb-2 mt-3 text-center align-content-center">
-        <div class="bg-yellow rounded p-2">
-            <h2 id="game_tile" class="text-light fw-bold">Please choose a ROM file.</h2>
-            <input type="file" id="rom_import" class="form-control form-control-lg w-50">
+    <div class="container mt-4">
+        <div class="window-frame mb-3">
+            <div class="bg-grey text-center window-title">C:\PROJECTS\Z64\EMULATOR.EXE</div>
+            <div class="window-content text-center">
+                <h2 id="game_tile" class="text-dark fw-bold mb-3">Please choose a ROM file.</h2>
+                <input type="file" id="rom_import" class="form-control form-control-lg" style="max-width: 500px; margin: 0 auto;">
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <canvas width="320" height="240"></canvas>
+        <div class="window-frame mb-3">
+            <div class="bg-grey text-center window-title">DISPLAY.SYS</div>
+            <div class="window-content text-center">
+                <canvas width="320" height="240" style="border: 2px solid #000; image-rendering: pixelated;"></canvas>
+            </div>
+        </div>
     </div>
 
     <!--<select name="" id="">
@@ -31,37 +38,51 @@
         <option value="DRAM">DRAM</option>
     </select>-->
 
-    <div class="container">
-        <div class="row mb-3">
-            <div class="col">
-                <input id="memoryAddress" type="text" maxlength="10" value="0x80000400">
-                <input id="memoryLength" type="number" value="10">
-                <button id="searchMemorybtn" class="btn btn-primary">Search in memory</button>
-                <button id="refreshbtn" class="btn btn-primary">Refresh Register view</button>
-                <div class="mt-2">
-                    <textarea readonly name="MemoryContent" id="MemoryContent" style="width: 25vh; height: 50vh;"></textarea>
-                    <textarea readonly name="asmCode" id="asmCode" style="width: 35vh; height: 50vh;"></textarea>
-                    <textarea readonly name="regs" id="regs" style="width: 20vh; height: 50vh;"></textarea>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="window-frame">
+                    <div class="bg-grey text-center window-title">DEBUGGER.SYS</div>
+                    <div class="window-content">
+                        <div class="mb-3">
+                            <input id="memoryAddress" type="text" maxlength="10" value="0x80000400" class="form-control d-inline-block" style="width: 150px;">
+                            <input id="memoryLength" type="number" value="10" class="form-control d-inline-block" style="width: 100px;">
+                            <button id="searchMemorybtn" class="dos-button">Search in memory</button>
+                            <button id="refreshbtn" class="dos-button">Refresh Register view</button>
+                        </div>
+                        <div class="mt-2">
+                            <textarea readonly name="MemoryContent" id="MemoryContent" style="width: 25%; height: 50vh; font-family: 'Courier New', monospace; border: 2px solid #000;"></textarea>
+                            <textarea readonly name="asmCode" id="asmCode" style="width: 40%; height: 50vh; font-family: 'Courier New', monospace; border: 2px solid #000;"></textarea>
+                            <textarea readonly name="regs" id="regs" style="width: 25%; height: 50vh; font-family: 'Courier New', monospace; border: 2px solid #000;"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-3">
-                <div class="bg-yellow rounded p-2">
-                    <h3 class="fw-bold text-light">Besturing</h3>
-                    <p class="fw-bold text-light">Importeer een ROM bestand,</p>
-                    <p class="fw-bold text-light">en gerbuik daarna de geheugen zoeker / register refresh knop.</p>
-                    <p class="fw-bold text-light">De emulator functioneerd nog niet en speelt geen spellen af,</p>
-                    <p class="fw-bold text-light">alleen de cpu is half functionerend.</p>
+            <div class="col-md-4">
+                <div class="window-frame">
+                    <div class="bg-grey text-center window-title">INFO.TXT</div>
+                    <div class="window-content">
+                        <h3 class="fw-bold text-dark mb-3">Besturing</h3>
+                        <p class="terminal-text">Importeer een ROM bestand,</p>
+                        <p class="terminal-text">en gerbuik daarna de geheugen zoeker / register refresh knop.</p>
+                        <p class="terminal-text">De emulator functioneerd nog niet en speelt geen spellen af,</p>
+                        <p class="terminal-text mb-3">alleen de cpu is half functionerend.</p>
 
-                    <h3 class="fw-bold text-light">Wat het ik hiervan geleerd</h3>
-                    <p class="fw-bold text-light">Ik heb van dit project geleerd hoe processoren werken,</p>
-                    <p class="fw-bold text-light">en ook hoe computer's werken.</p>
-                    <p class="fw-bold text-light">Ik heb ook geleerd dat je met javascript bitwise operations kan doen, </p>
-                    <p class="fw-bold text-light">en ook dat in javascript het moeilijler is om onderscheid te maken tussen signed en unsigned.</p>
+                        <div class="divider"></div>
+
+                        <h3 class="fw-bold text-dark mt-3 mb-3">Wat het ik hiervan geleerd</h3>
+                        <p class="terminal-text">Ik heb van dit project geleerd hoe processoren werken,</p>
+                        <p class="terminal-text">en ook hoe computer's werken.</p>
+                        <p class="terminal-text">Ik heb ook geleerd dat je met javascript bitwise operations kan doen, </p>
+                        <p class="terminal-text">en ook dat in javascript het moeilijler is om onderscheid te maken tussen signed en unsigned.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="padding"></div>
 
     <script src="../js/Z64/global_vars.js"></script>
     <script type="module" src="../js/Z64/main.js"></script>

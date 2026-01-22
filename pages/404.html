@@ -3,20 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404</title>
+    <title>404 - Not Found</title>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-    <header class="bg_window bg-yellow d-flex justify-content-center py-3 sticky-top shadow">
-        <ul class="nav nav-pills p-2">
-            <li class="nav-item"><a href="../index.html" class="btn_classic" aria-current="page">Home</a></li>
+    <div class="bg-blue text-center text-light terminal-header">IBM DOS SHELL v6.22 - ERROR</div>
+    <header class="bg-cyan sticky-top shadow-sm">
+        <ul id="file-bar" class="nav nav-pills p-0">
+            <li class="nav-item"><a href="../index.html" class="btn_classic">Home</a></li>
             <li class="nav-item"><a href="over.html" class="btn_classic">Over Mij</a></li>
             <li class="nav-item"><a href="projecten.html?interface='simpel'" class="btn_classic">Projecten</a></li>
         </ul>
     </header>
 
-    <h1 class="text-light fw-bold">404</h1>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="window-frame">
+                    <div class="bg-grey text-center window-title">ERROR.SYS</div>
+                    <div class="window-content console-log text-center">
+                        <h1 class="fw-bold" style="color: #ff0000; font-size: 4rem;">404</h1>
+                        <p class="log-entry"><span class="log-time">[ERROR]</span> File not found</p>
+                        <p class="log-entry"><span class="log-time">[INFO]</span> The requested page does not exist</p>
+                        <div class="mt-4">
+                            <button class="dos-button"><a class="nav-link" href="../index.html">C:\&gt; CD \ (Return Home)</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
