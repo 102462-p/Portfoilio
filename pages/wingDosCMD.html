@@ -287,6 +287,7 @@
 
         if (!url.searchParams.has("autostart")) {
             SetupPC();
+            setTimeout(() => {}, 1000);
             waitRam().then(() => {
                 console.log("CMD has auto started ...");
             });

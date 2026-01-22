@@ -16,8 +16,10 @@
     </header>
 
     <div class="container mb-2 mt-3 text-center align-content-center">
-        <h2 id="game_tile" class="text-light fw-bold">Please choose a ROM file.</h2>
-        <input type="file" id="rom_import" class="form-control form-control-lg w-50">
+        <div class="bg-yellow rounded p-2">
+            <h2 id="game_tile" class="text-light fw-bold">Please choose a ROM file.</h2>
+            <input type="file" id="rom_import" class="form-control form-control-lg w-50">
+        </div>
     </div>
 
     <div class="container">
@@ -30,7 +32,7 @@
     </select>-->
 
     <div class="container">
-        <div class="row">
+        <div class="row mb-3">
             <div class="col">
                 <input id="memoryAddress" type="text" maxlength="10" value="0x80000400">
                 <input id="memoryLength" type="number" value="10">
@@ -44,17 +46,19 @@
             </div>
 
             <div class="col-3">
-                <h3 class="fw-bold text-light">Besturing</h3>
-                <p class="fw-bold text-light">Importeer een ROM bestand,</p>
-                <p class="fw-bold text-light">en gerbuik daarna de geheugen zoeker / register refresh knop.</p>
-                <p class="fw-bold text-light">De emulator functioneerd nog niet en speelt geen spellen af,</p>
-                <p class="fw-bold text-light">alleen de cpu is half functionerend.</p>
+                <div class="bg-yellow rounded p-2">
+                    <h3 class="fw-bold text-light">Besturing</h3>
+                    <p class="fw-bold text-light">Importeer een ROM bestand,</p>
+                    <p class="fw-bold text-light">en gerbuik daarna de geheugen zoeker / register refresh knop.</p>
+                    <p class="fw-bold text-light">De emulator functioneerd nog niet en speelt geen spellen af,</p>
+                    <p class="fw-bold text-light">alleen de cpu is half functionerend.</p>
 
-                <h3 class="fw-bold text-light">Wat het ik hiervan geleerd</h3>
-                <p class="fw-bold text-light">Ik heb van dit project geleerd hoe processoren werken,</p>
-                <p class="fw-bold text-light">en ook hoe computer's werken.</p>
-                <p class="fw-bold text-light">Ik heb ook geleerd dat je met javascript bitwise operations kan doen, </p>
-                <p class="fw-bold text-light">en ook dat in javascript het moeilijler is om onderscheid te maken tussen signed en unsigned.</p>
+                    <h3 class="fw-bold text-light">Wat het ik hiervan geleerd</h3>
+                    <p class="fw-bold text-light">Ik heb van dit project geleerd hoe processoren werken,</p>
+                    <p class="fw-bold text-light">en ook hoe computer's werken.</p>
+                    <p class="fw-bold text-light">Ik heb ook geleerd dat je met javascript bitwise operations kan doen, </p>
+                    <p class="fw-bold text-light">en ook dat in javascript het moeilijler is om onderscheid te maken tussen signed en unsigned.</p>
+                </div>
             </div>
         </div>
     </div>
