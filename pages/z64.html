@@ -30,14 +30,32 @@
     </select>-->
 
     <div class="container">
-        <input id="memoryAddress" type="text" maxlength="10" value="0x80000400">
-        <input id="memoryLength" type="number" value="10">
-        <button id="searchMemorybtn" class="btn btn-primary">Search in memory</button>
-        <button id="refreshbtn" class="btn btn-primary">Refresh Register view</button>
-        <div class="mt-2">
-            <textarea readonly name="MemoryContent" id="MemoryContent" style="width: 25vh; height: 50vh;"></textarea>
-            <textarea readonly name="asmCode" id="asmCode" style="width: 35vh; height: 50vh;"></textarea>
-            <textarea readonly name="regs" id="regs" style="width: 20vh; height: 50vh;"></textarea>
+        <div class="row">
+            <div class="col">
+                <input id="memoryAddress" type="text" maxlength="10" value="0x80000400">
+                <input id="memoryLength" type="number" value="10">
+                <button id="searchMemorybtn" class="btn btn-primary">Search in memory</button>
+                <button id="refreshbtn" class="btn btn-primary">Refresh Register view</button>
+                <div class="mt-2">
+                    <textarea readonly name="MemoryContent" id="MemoryContent" style="width: 25vh; height: 50vh;"></textarea>
+                    <textarea readonly name="asmCode" id="asmCode" style="width: 35vh; height: 50vh;"></textarea>
+                    <textarea readonly name="regs" id="regs" style="width: 20vh; height: 50vh;"></textarea>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <h3 class="fw-bold text-light">Besturing</h3>
+                <p class="fw-bold text-light">Importeer een ROM bestand,</p>
+                <p class="fw-bold text-light">en gerbuik daarna de geheugen zoeker / register refresh knop.</p>
+                <p class="fw-bold text-light">De emulator functioneerd nog niet en speelt geen spellen af,</p>
+                <p class="fw-bold text-light">alleen de cpu is half functionerend.</p>
+
+                <h3 class="fw-bold text-light">Wat het ik hiervan geleerd</h3>
+                <p class="fw-bold text-light">Ik heb van dit project geleerd hoe processoren werken,</p>
+                <p class="fw-bold text-light">en ook hoe computer's werken.</p>
+                <p class="fw-bold text-light">Ik heb ook geleerd dat je met javascript bitwise operations kan doen, </p>
+                <p class="fw-bold text-light">en ook dat in javascript het moeilijler is om onderscheid te maken tussen signed en unsigned.</p>
+            </div>
         </div>
     </div>
 

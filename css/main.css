@@ -3,12 +3,9 @@
 }
 
 body {
-    background-image: url('https://cdn.pixabay.com/photo/2020/05/25/20/06/storm-5220380_1280.jpg');
+    background-image: url('../assets/png/bg_2.jpeg');
     background-color: #9e9e9e;
-    background-position: center;
     background-size: cover;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
 }
 
 header {

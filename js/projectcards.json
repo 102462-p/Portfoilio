@@ -1,16 +1,23 @@
 [
     {
         "title": "Raycaster",
-        "description": "Wordt nog toegevoegd.",
+        "description": "Een wolfenstein style render engine.",
         "link": "raycast.html",
         "icon": "../assets/png/icon_raycaster.png",
         "containerId": "card_container"
     },
     {
         "title": "Z64/MIPS3 Emulator",
-        "description": "Wordt nog toegevoegd.",
+        "description": "Een klein deel van een N64 emulator.",
         "link": "z64.html",
         "icon": "../assets/png/icon_z64.png",
+        "containerId": "card_container"
+    },
+    {
+        "title": "WingDOS Kernel",
+        "description": "Mijn eigen Kernel dat gemaakt is voor i386 hardware.",
+        "link": "wingDosCMD.html",
+        "icon": "../assets/svg/CMD_ico.svg",
         "containerId": "card_container"
     },
     {
