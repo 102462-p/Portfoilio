@@ -15,7 +15,7 @@ function make_card(name, desc, link, img, parent) {
     const descTitle = document.createElement('h3');
     const description = document.createElement('p');
 
-    root.setAttribute('class', 'col-6 row bg_window bg-grey text-center rounded p-2 shadow');
+    root.setAttribute('class', 'col-6 row bg_window text-center rounded p-2 shadow');
 
     col.setAttribute('class', 'col');
     cardImg.setAttribute('class', 'w-100 rounded');

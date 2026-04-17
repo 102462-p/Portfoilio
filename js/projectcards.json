@@ -21,6 +21,20 @@
         "containerId": "card_container"
     },
     {
+        "title": "Webgl engine",
+        "description": "Ik heb in C++ via emcc een engine gemaakt die ik kan gebruiken voor spellen.",
+        "link": "glengine.html",
+        "icon": "../assets/png/glengine_icon.png",
+        "containerId": "card_container"
+    },
+    {
+        "title": "DissamTools",
+        "description": "Collectie van programmas om MIPS binaries te splitsen en decompileren",
+        "link": "disamtool.html",
+        "icon": "../assets/png/icon_disamtools.png",
+        "containerId": "card_container"
+    },
+    {
         "title": "Test",
         "description": "Text",
         "link": "",

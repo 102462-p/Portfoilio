@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIPS Decompiler Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>MIPS Decompiler Tools</h1>
+  <div class="tabs">
+    <button class="tab" onclick="switchTab('import_proj')">📥 Import Project (.ZIP)</button>
+    <button class="tab" onclick="switchTab('bin_split')">📥 Binary Splitter</button>
+    <button class="tab" onclick="switchTab('assembly')">🧩 Assembly View</button>
+    <button class="tab" onclick="switchTab('ccompiler')">🧩 C Compiler</button>
+  </div>
+
+  <div style="display: flex; gap: 2%;">
+    <div id="proj_files">
+      <h3>Files: </h3>
+      <div id="proj_file_names"></div>
+    </div>
+
+    <div id="import_proj" class="tab-content" style="height: 100vh;">
+      <iframe id="zip_view" src="zipviewer.html" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+
+    <div id="assembly" class="tab-content hidden">
+      <pre id="assemblyView">Select a file from the folder structure to view possible disassembly.</pre>
+      <textarea name="file_view" id="file_view" style="width: 100%; height: 100vh;"></textarea>
+    </div>
+
+    <div id="ccompiler" class="tab-content hidden" style="height: 100vh;">
+      <iframe src="Ccompiler.html" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+
+    <div id="bin_split" class="tab-content hidden" style="height: 100vh;">
+      <iframe id="bin_splitfr" src="splitter.html" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+  </div>
+
+  <script src="js/handleMsgs.js"></script>
+  <script src="js/download.js"></script>
+  <script src="js/mips1_ISA_data.js"></script>
+  <script src="js/script.js"></script>
+
+  <script>
+    const zip_window = document.getElementById('zip_view').contentWindow;
+    const proj_file_names = document.getElementById('proj_file_names');
+    let loaded_files = [];
+    let loaded_folders = [];
+
+    message_handler.handleMsg({
+      getFiles: (files) => {
+        //console.log(files);
+
+        const root = document.createElement('div');
+        const fileName = document.createElement('p');
+
+        loaded_files[loaded_files.length++] = files;
+
+        root.style.display = 'flex';
+        fileName.innerHTML = files[0];
+        fileName.onclick = () => {
+          //const type = root.lastChild.value;
+          const type = files[0].split('.')[1];
+          const file = files[1];
+
+          const curTab = getTab();
+          switch(curTab){
+            case 'assembly':{
+              LoadFile(type, file, 'file_view');
+              break;
+            }
+            case 'ccompiler':{
+              break;
+            }
+            case 'bin_split':{
+              const splitframe = document.getElementById('bin_splitfr').contentWindow;
+              message_handler.sendMsh(splitframe, 'getInputRom', files);
+              break;
+            }
+            default:{
+              LoadFile(type, file, 'file_view');
+              switchTab('assembly');
+            }
+          }
+        }
+
+        root.append(fileName);
+        //incFileSelect(root);
+        document.getElementById(files[2]).append(root);
+        //proj_file_names.append(root);
+      },
+      createFolder: (foldername) => {
+        const folder = document.createElement('div');
+        const arrow = document.createElement('span');
+        const nested_files = document.createElement('div');
+
+        nested_files.setAttribute('class', 'folder_nested');
+        nested_files.setAttribute('id', foldername[0]);
+        arrow.innerHTML = '▶';
+        folder.innerHTML = foldername[0];
+        arrow.setAttribute('class', 'folder_arrow');
+        folder.setAttribute('class', 'folder');
+        folder.setAttribute('id', foldername[0] + '_folder');
+
+        loaded_folders[loaded_folders.length++] = foldername;
+
+        arrow.onclick = () => {
+          arrow.classList.toggle('open');
+          nested_files.classList.toggle('open');
+        }
+
+        let root = foldername[1].split('/');
+        if(root.length >= 2){root = root[root.length -2];}
+        else{root = 'proj_file_names';}
+        
+        folder.append(arrow);
+        folder.append(nested_files);
+        document.getElementById(root).append(folder);
+      },
+      fillFolder: (files) => {
+        let root = files[1].split('/');
+        if(root.length >= 2){root = root[root.length -2];}
+        else{root = 'proj_file_names';}
+
+        for(let i = 0; i < files[0].length / 3; i++){
+          let offset = i * 3;
+          message_handler.sendMsh(window.parent, 'getFiles', [files[0][offset], files[0][offset +1], root, files[0][offset +2]]);
+        }
+      },
+      prepareFiles: () => {
+        const zip_view = document.getElementById('zip_view').contentWindow;
+        message_handler.sendMsh(zip_view, 'getInputFiles', loaded_files);
+      },
+      Searchfolders: (frame) => {
+        message_handler.sendMsh(document.getElementById(frame).contentWindow, 'getFolders', loaded_folders);
+      }
+    });
+  </script>
+</body>
+</html>

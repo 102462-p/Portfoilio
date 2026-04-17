@@ -1,0 +1,94 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background: #f4f4f4;
+}
+
+h1 {
+  color: #333;
+}
+
+.tabs {
+  margin-bottom: 10px;
+}
+
+.tab {
+  padding: 10px;
+  background: #ddd;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.tab:hover {
+  background: #bbb;
+}
+
+.tab-content {
+  padding: 15px;
+  background: white;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  width: 70%;
+}
+
+.hidden {
+  display: none;
+}
+
+ul#fileList {
+  list-style: none;
+  padding: 0;
+}
+
+ul#fileList li {
+  margin: 4px 0;
+}
+
+select {
+  margin-left: 10px;
+}
+
+#proj_files{
+  width: 28%;
+  background: white;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.folder{
+  cursor: pointer;
+  user-select: none;
+}
+
+.folder_nested{
+  display: none;
+  margin-left: 20px;
+}
+
+.folder_nested.open{
+  display: block;
+}
+
+.folder_arrow{
+  display: inline-block;
+  transition: 0.2s;
+  margin-right: 6px;
+}
+
+.folder_arrow.open{
+  transform: rotate(90deg);
+}
+
+.d-flex{
+  display: flex;
+}
+
+.d-block{
+  display: block;
+}

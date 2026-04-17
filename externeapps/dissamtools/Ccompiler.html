@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Minimal Wasm Binary Example (No libraries)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h3>Files used for final binary</h3>
+<div class="d-flex">
+  <div style="border: 1px solid #ccc; width: 50%; margin: 2vh;">
+    <div style="display: flex;"><p>main.c</p><button>Remove</button></div>
+    <div style="display: flex;"><p>player.c</p><button>Remove</button></div>
+    <div style="display: flex;"><p>player.h</p><button>Remove</button></div>
+    <div style="display: flex;"><p>video.s</p><button>Remove</button></div>
+  </div>
+
+  <div class="d-block">
+  <div style="margin-bottom: 2vh;">
+    <h2>Compiler Settings</h2>
+    <button>Compile(All)</button>
+
+    <select name="isa" id="isa">
+      <option value="mips3">MIPS(III)</option>
+      <option value="arm2">ARMv2</option>
+    </select>
+
+    <select name="endian" id="endian">
+      <option value="little">Big endian</option>
+      <option value="big">Little endian</option>
+    </select>
+
+    <button>Compile</button>
+  </div>
+
+  <div>
+    <h2>Linker Settings</h2>
+    <button>Compile(All)</button>
+
+    <label for="linkerscript">Import linker script</label>
+    <input name="linkerscript" id="linkerscript" type="file">
+
+    <button>Link into binary</button>
+  </div>
+  </div>
+</div>
+<!-- <textarea name="" id="win_code" style="width: 40%; height: 250px;">
+  #include <stdio.h>
+
+  int main(void) {
+      printf("Hello, world!\n");
+      return 0;
+  }
+</textarea><br> -->
+
+<!-- <button id="run-btn">Run add(42, 58)</button> -->
+
+<pre id="output"></pre>
+
+<script>
+// This is a precompiled minimal Wasm binary for:
+// (module
+//   (func $add (param i32 i32) (result i32)
+//     local.get 0
+//     local.get 1
+//     i32.add)
+//   (export "add" (func $add))
+// )
+
+const code_area = document.getElementById('win_code');
+
+function get_line(text, index) {
+  return text.split('\n')[index].trim();
+}
+
+//console.log(get_line(code_area.textContent, 0));
+
+// The binary below is the encoded version of that module.
+const wasmBinary = new Uint8Array([
+  0x00,0x61,0x73,0x6d, // WASM binary magic "\0asm"
+  0x01,0x00,0x00,0x00, // WASM version 1
+
+  // Type section
+  0x01,       // Section code: Type
+  0x07,       // Section size
+  0x01,       // Number of types
+  0x60,       // Func type form
+  0x02,       // Number of parameters
+  0x7f,0x7f,  // param i32, i32
+  0x01,       // Number of results
+  0x7f,       // result i32
+
+  // Function section
+  0x03,       // Section code: Function
+  0x02,       // Section size
+  0x01,       // Number of functions
+  0x00,       // Type index of function 0
+
+  // Export section
+  0x07,       // Section code: Export
+  0x07,       // Section size
+  0x01,       // Number of exports
+  0x03,       // String length of export name
+  0x61,0x64,0x64, // 'a','d','d'
+  0x00,       // Export kind: function
+  0x00,       // Function index
+
+  // Code section
+  0x0a,       // Section code: Code
+  0x09,       // Section size
+  0x01,       // Number of function bodies
+  0x07,       // Body size
+  0x00,       // Local decl count
+  0x20,0x00,  // local.get 0
+  0x20,0x01,  // local.get 1
+  0x6a,       // i32.add
+  0x0b        // end
+]);
+
+async function runWasm() {
+  const outputEl = document.getElementById('output');
+  outputEl.textContent = 'Compiling and running...';
+
+  try {
+    const { instance } = await WebAssembly.instantiate(wasmBinary.buffer);
+    const result = instance.exports.add(42, 58);
+    outputEl.textContent = `add(42, 58) = ${result}`;
+  } catch (e) {
+    outputEl.textContent = 'Error: ' + e;
+  }
+}
+
+function to_wasm(input){
+  const data_length = input.split('\n').length
+  for(let i = 0; i < data_length; i++){
+    line = get_line(input, i);
+    console.log(line);
+  }
+}
+
+//to_wasm(code_area.textContent);
+
+// document.getElementById('run-btn').onclick = runWasm;
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Binary Splitter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="fileName">Binary Splitter</h1>
+  <div class="tabs">
+    <button class="tab-button" data-tab="decompile">Decompile</button>
+    <button class="tab-button" data-tab="settings">Settings</button>
+    <button class="tab-button" data-tab="output">Output</button>
+    <button class="tab-button" data-tab="romfile">Rom file</button>
+  </div>
+
+  <div id="decompile" class="tab-content active">
+    <h2>Upload ROM</h2>
+    <input type="file" id="romFile" accept=".n64"><br><br>
+    <button onclick="processFiles()">Start Splitting</button>
+  </div>
+
+  <div id="settings" class="tab-content">
+    <h2>Edit YAML Configuration</h2>
+    <textarea id="yamlEditor" rows="20" cols="80"></textarea><br>
+    <input type="file" id="yamlFile" accept=".yaml,.yml"><br><br>
+    <button onclick="loadCustomYAML()">Load Uploaded YAML</button>
+  </div>
+
+  <div id="output" class="tab-content">
+    <h2>Output Files</h2>
+    <pre id="outputLog">Waiting...</pre>
+    <div id="fileViewer" class="fileViewertab"></div>
+    <div id="splitfiles"></div>
+  </div>
+
+  <div id="romfile" class="tab-content">
+    <h2>Rom file content</h2>
+    <pre id="outputLog">Waiting...</pre>
+    <div id="romfileViewer" class="fileViewertab"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="js/bitfuncs.js"></script>
+  <script src="js/handleMsgs.js"></script>
+  <script src="js/splitter.js"></script>
+</body>
+</html>

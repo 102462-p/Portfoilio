@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple ZIP Viewer</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #fileList { margin-top: 20px; border: 1px solid #ccc; padding: 10px; }
+    #fileList li { margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+  <h2>ZIP File Viewer</h2>
+  <input type="file" id="zipFileInput" accept=".zip" /><br><br>
+  <input type="text" name="zipName" id="zipName" value="" placeholder="Zip name ...">
+  <button id="exportBtn" disabled>Export as ZIP</button><br><br>
+
+  <div id="import" class="tab-content hidden">
+      <input type="file" id="isoInput" accept=".iso, .img, .bin" />
+      <p>Choose a PSX ISO file to begin.</p>
+  </div>
+
+  <!--<ul id="fileList"></ul>-->
+
+   <script src="js/handleMsgs.js"></script>
+  <script src="js/zip.js"></script>
+  <script src="js/iso.js"></script>
+</body>
+</html>

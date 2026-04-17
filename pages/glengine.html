@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Webgl engine</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="bg-blue text-center text-light terminal-header">IBM DOS SHELL v6.22 - C++ WEBGL ENGINE.EXE</div>
+    <header class="bg-cyan sticky-top shadow-sm">
+        <ul id="file-bar" class="nav nav-pills p-0">
+            <li id="pageHeader" class="nav-item"><a href="projecten.html?interface='simpel'" class="btn_classic" aria-current="page">Terug Naar Projecten</a></li>
+        </ul>
+    </header>
+
+    <div class="container p-3 mt-4">
+        <div class="window-frame mb-4">
+            <div class="bg-grey text-center window-title">C:\PROJECTS\C++ Webgl engine\MAIN.EXE</div>
+            <div class="window-content">
+                <h1 class="fw-bold text-dark text-center mb-4">C++ Webgl engine</h1>
+                <div class="row">
+                    <div class="col-md-8">
+                        <canvas id="gameCanvas" width="800" height="600"></canvas>
+                        <div>Spellen die ik hier mee hebt gemaakt</div>
+                        <a style="text-decoration: underline; color: webkit-link;" href="https://wigdos-inc.github.io/102462_wigDos/SuperJeffOdyssey_V2/">Super Jeff Moonshine</a>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="window-frame">
+                            <div class="bg-grey text-center window-title">INFO.TXT</div>
+                            <div class="window-content">
+                                <h3 class="fw-bold text-dark mb-3">Notitie</h3>
+                                <p class="terminal-text">De engine heeft geen rotatie matrix dus alles is stationair,</p>
+                                <p class="terminal-text">Bollen heeft een grote kans om niet te laden want er zit een fout in de code het werkt alleen op DirectX drivers.</p>
+
+                                <div class="divider"></div>
+
+                                <h3 class="fw-bold text-dark mt-3 mb-3">Wat heb ik hiervan geleerd</h3>
+                                <p class="terminal-text">Ik heb hiervan geleerd hoe Opengl/ webgl werkt,</p>
+                                <p class="terminal-text">en hoe ik met C++ kan programmeren op het web door hebruikt te maken van Emscripten compiler.</p>
+                                <p class="terminal-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import EngineModule from './../lib/glengine/jeffsgine.js';
+        let engine = null;
+        let TexBuffer = null;
+        let collision = null;
+
+        const width = 32;
+        const height = 32;
+
+        // Define 4 RGBA colors
+        const colors = [
+            [255, 0, 0, 255],    // red
+            [0, 255, 0, 255],    // green
+            [0, 0, 255, 255],    // blue
+            [255, 255, 0, 255]   // yellow
+        ];
+
+        const pixels = new Uint8Array(width * height * 4);
+
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                // pick color based on position (checker pattern)
+                const colorIndex = ((x % 2) + (y % 2) * 2) % colors.length;
+                const color = colors[colorIndex];
+
+                const idx = (y * width + x) * 4;
+                pixels[idx]     = color[0]; // R
+                pixels[idx + 1] = color[1]; // G
+                pixels[idx + 2] = color[2]; // B
+                pixels[idx + 3] = color[3]; // A
+            }
+        }
+
+        //for (let y = 0; y < height; y++) {
+            //for (let x = 0; x < width; x++) {
+                //const o = (y * width + x) * 4;
+                //pixels[o] = Math.floor(Math.random() * 255);
+                //pixels[o +1] = Math.floor(Math.random() * 255);
+                //pixels[o +2] = Math.floor(Math.random() * 255);
+                //pixels[o +3] = 255;
+            //}
+        //}
+
+        let texture;
+
+        async function loadEngine() {
+            const Module = await EngineModule();
+            console.log(Module);
+            engine = new Module.Engine;
+            TexBuffer = new Module.TexBuffer;
+            collision = new Module.Collision;
+
+            for (let i = 0; i < pixels.length; i++) {
+                TexBuffer.push_back(pixels[i]);
+            }
+
+            let box = collision.createBox({x: 0, y: 0, z: 0}, 10,10,10);
+            let cyl = collision.createCylinder({x: 0, y: 0, z: 0}, 10, 20);
+            console.log(box, cyl);
+
+            engine.engineInit();
+
+            texture = engine.createTexture({id: 0, width: width, height: height, pixels: TexBuffer});
+            console.log(texture);
+
+            update();
+        }
+
+        function update() {
+            engine.engineUpdate({x: 5, y: 5, z: 10}, {x: 0, y: 0, z: 0});
+            engine.drawCube(0,0,0, 3,3,3, {x: 0.9, y: 0.8, z: 0.18});
+            engine.drawTexCube(0,4,0, 3,3,3, {x: 0.9, y: 0.8, z: 0.18}, true, texture);
+            engine.drawSphere(5,0,0, 2, {x: 0.2, y: 0.6, z: 0.9});
+            engine.drawCylinder(-5,0,0, 1, 3, {x: 0.8, y: 0.2, z: 0.5});
+
+            requestAnimationFrame(update);
+        }
+
+        loadEngine();
+    </script>
+</body>
+</html>
