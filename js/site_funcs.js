@@ -15,16 +15,16 @@ function make_card(name, desc, link, img, parent) {
     const descTitle = document.createElement('h3');
     const description = document.createElement('p');
 
-    root.setAttribute('class', 'col-6 row bg_window text-center rounded p-2 shadow');
+    root.setAttribute('class', 'col-6 row bg_window text-center p-2');
 
     col.setAttribute('class', 'col');
-    cardImg.setAttribute('class', 'w-100 rounded');
+    cardImg.setAttribute('class', 'w-100 rounded shadow');
     cardImg.style.width = '30vh';
     cardImg.style.height = '30vh';
     cardImg.src = img;
     cardLink.innerHTML = name;
     cardLink.href = link;
-    cardLink.setAttribute('class', 'm-3 p-2 bg-success nav-link text-light rounded');
+    cardLink.setAttribute('class', 'm-3 p-2 bg-cyan nav-link btn-link');
 
     col2.setAttribute('class', 'col');
     descTitle.setAttribute('class', 'text-dark');

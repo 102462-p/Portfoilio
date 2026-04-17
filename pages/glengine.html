@@ -6,6 +6,12 @@
     <title>C++ Webgl engine</title>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        #gameCanvas {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div class="bg-blue text-center text-light terminal-header">IBM DOS SHELL v6.22 - C++ WEBGL ENGINE.EXE</div>
@@ -116,10 +122,22 @@
             update();
         }
 
+        let z = 0;
+        let z_reverse = false;
+
+        let cameraY = 0;
         function update() {
+            if (z >= 5) z_reverse = true;
+            if (z <= 0)  z_reverse = false;
+
+            if (z_reverse) z -= 0.01
+            else z += 0.01;
+
+            cameraY++;
+            
             engine.engineUpdate({x: 5, y: 5, z: 10}, {x: 0, y: 0, z: 0});
-            engine.drawCube(0,0,0, 3,3,3, {x: 0.9, y: 0.8, z: 0.18});
-            engine.drawTexCube(0,4,0, 3,3,3, {x: 0.9, y: 0.8, z: 0.18}, true, texture);
+            engine.drawCube(0,0,0, 3,z,3, {x: 0.9, y: 0.8, z: 0.18});
+            engine.drawTexCube(0,4,0, z,3,3, {x: 0.9, y: 0.8, z: 0.18}, true, texture);
             engine.drawSphere(5,0,0, 2, {x: 0.2, y: 0.6, z: 0.9});
             engine.drawCylinder(-5,0,0, 1, 3, {x: 0.8, y: 0.2, z: 0.5});
 

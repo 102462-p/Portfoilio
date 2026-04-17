@@ -30,6 +30,14 @@ a {
     transition: all 0.2s ease;
 }
 
+.btn-link {
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #000000;
+    font-weight: bold;
+}
+
 #file-bar {
     display: flex;
     padding: 0.5rem 1rem;
